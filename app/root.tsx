@@ -6,6 +6,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "react-router";
+import { useRef } from "react";
 
 import type { Route } from "./+types/root";
 import "./app.css";
@@ -24,6 +25,10 @@ export const links: Route.LinksFunction = () => [
 ];
 
 export function Layout({ children }: { children: React.ReactNode }) {
+  const bodyRef = useRef<HTMLBodyElement>();
+  
+  bodyRef.current?.focus();
+  
   return (
     <html lang="en">
       <head>
@@ -32,7 +37,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         <Meta />
         <Links />
       </head>
-      <body>
+      <body ref={bodyRef}>
         {children}
         <ScrollRestoration />
         <Scripts />
@@ -56,7 +61,7 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
       error.status === 404
         ? "The requested page could not be found."
         : error.statusText || details;
-  } else if (import.meta.env.DEV && error && error instanceof Error) {
+  } else if (import.meta.env.DEV && false && error instanceof Error) {
     details = error.message;
     stack = error.stack;
   }
