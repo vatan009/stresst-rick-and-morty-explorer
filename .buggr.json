@@ -1,0 +1,25 @@
+{
+  "buggerId": "cmp5quus60001l104422e1643",
+  "stressLevel": "low",
+  "bugCount": 2,
+  "createdAt": "2026-05-14T17:09:56.539Z",
+  "executedAt": "2026-05-14T17:10:08.903Z",
+  "aiStartedAt": "2026-05-14T17:09:56.875Z",
+  "aiCompletedAt": "2026-05-14T17:10:08.903Z",
+  "aiDurationMs": 12028,
+  "symptoms": [
+    "Application root layout: App crashes immediately on page load with 'Cannot read properties of null' error. The layout component fails to render completely.",
+    "Error boundary page in development mode: Error details and stack traces are hidden even when they should be visible. Shows generic 'An unexpected error occurred' message instead of actual error information."
+  ],
+  "filesBuggered": [
+    "app/root.tsx"
+  ],
+  "changes": [
+    "Added useRef import and created bodyRef that calls focus() before the ref is attached to the DOM element",
+    "Changed 'import.meta.env.DEV && error' condition to 'import.meta.env.DEV && false' preventing error details and stack traces from showing in development mode"
+  ],
+  "originalCommitSha": "1df59fc9aab86dbfa1bc0e21a4ca342131724a2b",
+  "owner": "vatan009",
+  "repo": "stresst-rick-and-morty-explorer",
+  "branch": "buggr-main-20260514-223937"
+}
